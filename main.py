@@ -2,8 +2,6 @@ from bs4 import BeautifulSoup
 import requests
 from tkinter import *
 
-
-
 class MyWindow:
     def __init__(self, master):
         self.master = master
@@ -16,17 +14,17 @@ class MyWindow:
         self.lbl.place(relx=.5, rely=.1, anchor='center')
 
 
-    def get_html(self, url):
+def get_html(self, url):
         html_content = requests.get(url).text
         return html_content
 
-    def get_data(self, html):
+def get_data(self, html):
         soup = BeautifulSoup(html, 'lxml')
         # t = soup.find('div', class_ = "temp fact__temp fact__temp_size_s").find('span', class_ = "temp__value temp__value_with-unit")
         t = soup.find('div', {'class': "sc-16r8icm-0 kjciSH priceTitle"}).find('span')
         return t.text
 
-    def main(self):
+def main(self):
         self.txt.delete(0, END)
         url = 'https://coinmarketcap.com/currencies/compound/'
         res = self.get_html(url)
