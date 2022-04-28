@@ -1,16 +1,27 @@
-# This is a sample Python script.
-
-# Press Shift+F10 to execute it or replace it with your code.
-# Press Double Shift to search everywhere for classes, files, tool windows, actions, and settings.
-
-
-def print_hi(name):
-    # Use a breakpoint in the code line below to debug your script.
-    print(f'Hi, {name}')  # Press Ctrl+F8 to toggle the breakpoint.
+from bs4 import BeautifulSoup
+import requests
+from tkinter import *
 
 
-# Press the green button in the gutter to run the script.
+
+def get_html(self, url):
+        html_content = requests.get(url).text
+        return html_content
+
+def get_data(self, html):
+    soup = BeautifulSoup(html, 'lxml')
+    # t = soup.find('div', class_ = "temp fact__temp fact__temp_size_s").find('span', class_ = "temp__value temp__value_with-unit")
+    t = soup.find('div', {'class': "sc-16r8icm-0 kjciSH priceTitle"}).find('span')
+    return t.text
+
+def main(self):
+    self.txt.delete(0, END)
+    url = 'https://coinmarketcap.com/currencies/compound/'
+    res = self.get_html(url)
+    self.txt.insert(0, self.get_data(res))
+
+
 if __name__ == '__main__':
-    print_hi('PyCharm')
-
-# See PyCharm help at https://www.jetbrains.com/help/pycharm/
+    root = Tk()
+    win = MyWindow(root)
+    root.mainloop()
