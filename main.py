@@ -7,13 +7,13 @@ from tkinter import *
 class MyWindow:
     def __init__(self, master):
         self.master = master
-        self.master.geometry('400x400')
-        self.btn = Button(width=15, height=2, text='Показать курс', command=self.main)
-        self.btn.place(relx=.5, rely=.4, anchor='c')
+        self.master.geometry('300x200')
+        self.btn = Button(width=15, height=2, text='Показать курс',font=('Times New Roman', 11), command=self.main)
+        self.btn.place(relx=.5, rely=.6, anchor='c')
         self.txt = Entry(width=25)
-        self.txt.place(relx=.5, rely=.2, anchor='c')
+        self.txt.place(relx=.5, rely=.3, anchor='c')
         self.lbl = Label(root, text='Курс Compound', font=('Times New Roman', 16))
-        self.lbl.place(relx=.5, rely=.07, anchor='center')
+        self.lbl.place(relx=.5, rely=.1, anchor='center')
 
 
     def get_html(self, url):
